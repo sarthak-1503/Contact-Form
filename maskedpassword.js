@@ -4,7 +4,7 @@ $(function() {
     jQuery.fn.getCursorPosition = function() {
         if (this.lengh == 0) {
             return -1;
-        } 
+        }
         return $(this).getSelectionStart();
     }
 
@@ -12,15 +12,14 @@ $(function() {
         if (this.lengh == 0) {
             return -1;
         }
+
         input = this[0];
         var pos = input.value.length;
-
+        
         if (input.createTextRange) {
             var r = document.selection.createRange().duplicate();
             r.moveEnd('character', input.value.length);
-
             if (r.text == '') pos = input.value.length;
-
             pos = input.value.lastIndexOf(r.text);
         } 
         else if (typeof(input.selectionStart) != "undefined") {
@@ -29,7 +28,6 @@ $(function() {
         
         return pos;
     }
-
     //Bind Key Press event with password field
     $("#txtpwd").keyup(function(e) {
         setTimeout(function() {
@@ -53,7 +51,7 @@ $(function() {
         //Get Current Cursor Position on Password Textbox
         var curPos = $("#txtpwd").getCursorPosition();
         var PwdLength = $("#txtpwd").val().trim().length;
-        
+
         if (unicode != 9 && unicode != 13 && unicode != 37 && unicode != 40 && unicode!= 37 && unicode != 39) {
         //If NOT <Back Space> OR <DEL> Then...
             if (unicode != 8 && unicode != 46) {
